@@ -244,6 +244,13 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">1. Introduction</h2>
         <div class="content">
+
+          <div class="content has-text-justified">
+          
+            <p>the process involves multiple steps, with the router being the most critical component. The router first receives the user query containing task information. Its goal is to choose an appropriate LLM based on the incoming information in the user query to ensure optimal performance and minimal cost (LLM API cost). After calculation, the router chooses a suitable LLMn to answer the user query. Finally, the response is returned to the user with its performance and cost. </p>
+            
+          </div>
+
           <div class=" has-text-centered">
             <img src="static/images/Motivation.png" alt="MY ALT TEXT"/>
           </div>
@@ -283,9 +290,9 @@
           <div class=" has-text-centered">
             <img src="static/images/figure2.png" alt="MY ALT TEXT"/>
           </div>
-          <b>
+          <p>
             GraphRouter first transforms the interaction data among tasks, queries, and LLMs into a graph. Specifically, as shown in the right side of Figure above, we model tasks, queries, and LLMs in the left table as task nodes, query nodes, and LLM nodes, while the relationships derived from the interaction data are represented by edge features. We apply GNN to embed the node and edge features and use them for training and testing.
-          </b>
+          </p>
         </div>
 
       </div>
