@@ -61,21 +61,21 @@
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                Tao Feng<sup>1</sup>,
+                Tao Feng,
               </span>
                 <span class="author-block">
-                  Yanzhen Shen<sup>1</sup>,
+                  Yanzhen Shen,
                 </span>
                   <span class="author-block">
                     <span class="author-block">
-                      <a href="https://cs.stanford.edu/~jiaxuan/" target="_blank">Jiaxuan You</a><sup>1</sup></span>
+                      <a href="https://cs.stanford.edu/~jiaxuan/" target="_blank">Jiaxuan You</a></span>
                     <span class="author-block">
                 
                   </div>
              
                   <div class="is-size-5 publication-authors">
                     <span class="author-block">
-                      <sup>1</sup>University of Illinois Urbana-Champaign,
+                      <sup>1</sup>University of Illinois Urbana-Champaign
                   </div>
 
                   <div class="column has-text-centered">
@@ -217,8 +217,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Large language models (LLMs) have transformed AI research thanks to their powerful internal capabilities and knowledge. However, existing LLMs still fail to effectively incorporate the massive external knowledge when interacting with the world. Although retrieval-augmented LLMs are proposed to mitigate the issue, they are still fundamentally constrained by the context length of LLMs, as they can only retrieve top-K raw data chunks from the external knowledge base which often consists of millions of data chunks. Here we propose Thought-Retriever, a novel model-agnostic algorithm that helps LLMs generate output conditioned on arbitrarily long external data, without being constrained by the context length or number of retrieved data chunks. Our key insight is to let an LLM fully leverage its intermediate thoughts generated when solving past user queries, organizing them in thought memory, and retrieving the relevant thoughts when addressing new queries. Notably, Thought-Retriever can self-evolve through continuous user interactions thanks to the growing number and depth of thoughts. Besides algorithmic innovation, we further meticulously prepare a novel benchmark, AcademicEval, which requires an LLM to faithfully leverage ultra-long context to answer queries based on real-world academic papers. Extensive experiments on AcademicEval and two other datasets validate that Thought-Retriever remarkably outperforms state-of-the-art baselines by achieving a 5%-45% higher win rate. More importantly, we further demonstrate 2 exciting findings: (1) Thought-Retriever can indeed help LLM self-evolve after solving more user queries; (2) Thought-Retriever learns to leverage deeper thoughts to answer more abstract user queries.
-
+            The rapidly growing number and variety of Large Language Models (LLMs) present significant challenges in efficiently selecting the appropriate LLM for a given query, especially considering the trade-offs between performance and com- putational cost. Current LLM selection methods often struggle to generalize across new LLMs and different tasks because of their limited ability to leverage contextual interactions among tasks, queries, and LLMs, as well as their dependence on a transductive learning framework. To address these shortcomings, we introduce a novel inductive graph framework, named as GraphRouter, which fully utilizes the contextual information among tasks, queries, and LLMs to enhance the LLM selection process. GraphRouter constructs a heterogeneous graph comprising task, query, and LLM nodes, with interactions represented as edges, which ef- ficiently captures the contextual information between the query's requirements and the LLM's capabilities. Through an innovative edge prediction mechanism, GraphRouter is able to predict attributes (the effect and cost of LLM response) of potential edges, allowing for optimized recommendations that adapt to both existing and newly introduced LLMs without requiring retraining. Comprehen- sive experiments across three distinct effect-cost weight scenarios have shown that GraphRouter substantially surpasses existing routers, delivering a minimum per- formance improvement of 12.3%. In addition, it achieves enhanced generalization across new LLMs settings and supports diverse tasks with at least a 9.5% boost in effect and a significant reduction in computational demands. This work endeavors to apply a graph-based approach for the contextual and adaptive selection of LLMs, offering insights for real-world applications.
           </p>
         </div>
 
@@ -261,8 +260,9 @@
         
         <div class="content has-text-justified">
           
-          <p>For instance, consider the scenario where an LLM can only process two data chunks in its context window, yet <span class="math-container">\( \mathcal{K}_i = \{K_1, K_2, K_3, K_4\} \)</span> are needed to fully answer a query. Traditional methods might retrieve accurately but fail to cover all relevant data, compromising either precision or recall.</p>
-          <p>In contrast, Thought-Retriever leverages past LLM thoughts and balances low-level facts and high-levle thoughts to answer user queries, offering a flexible and easy approach to achieve better information retrieval. </p>
+          <p>To fully utilize the contextual information for different queries and tasks, GraphRouter constructs a heterogeneous graph that contains three types of nodes: task node, query node and LLM node. The interaction information between them is represented as edges in a graph, which enables us to transform the task of predicting the cost and performance of an LLM-query pair to an edge prediction task. After forecasting the properties of the edges, we recommend the most suitable LLM to the user based on their preferences for performance and cost.</p>
+          
+          <p>In order to make GraphRouter generalizable to new LLMs, we make efforts in two key aspects. For the input, we utilize a generative LLM such as GPT-4o to generate a descriptive text for each LLM, and then we derive an initial embedding for each LLM using a moderate-size pre-trained language model. We also further develop a heterogeneous GNN that aggregates information from neighboring nodes of different types; As a result, given few-shot data, a trained GraphRouter can be generalized to new LLM nodes without retraining. </p>
           
        
         </div>
